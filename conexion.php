@@ -11,4 +11,27 @@
   } else {
     echo '<p>Se ha establecido la conexión al servidor MySQL con éxito.</p>';
   }
+
+  function ejecutarConsulta($usuario, $pass){
+    
+    echo "usuario: ".$usuario;
+    echo "passs: ".$pass;
+
+  
+    $sql="SELECT * FROM usuarios WHERE username ='$usuario' AND password='$pass' ";
+
+    global $link;
+
+    $query = $link->query($sql);
+
+    $data = Array();
+    echo "aqui1";
+		while ( $reg= $query->fetch_object() ){
+      echo "aqui2";
+      echo $reg->password;
+      echo "<br>";
+		}
+
+		return $query;
+  }
 ?>
